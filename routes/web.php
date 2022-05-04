@@ -18,4 +18,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+// Routa que da acesso a listagem dos livos
 Route::get('/livros', [LivroController::class, 'index'])->name('livros.index');
+//Routa para o formulario de cadastro de livro
+Route::get('/livros/create', [LivroController::class, 'create'])->name('livros.create');
+//Cadastro de Livro
+Route::post('/livros', [ LivroController::class, 'store'])->name('livro.store');
+
+
