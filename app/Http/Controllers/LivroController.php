@@ -4,22 +4,49 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreUpateLivros;
 use App\Models\Livro;
-use Illuminate\Http\Request;
 
 class LivroController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         // retorna todos os livros ordenando ordenando pelo id em decrescente
-        $livros = Livro::orderBy('id','desc')->get();
+        $livros = Livro::orderBy('id', 'desc')->get();
         return view('livros.index', compact('livros'));
     }
 
-    public function create(){
+    public function create()
+    {
         return view('livros.create');
     }
 
-    public function store(StoreUpateLivros $request){
-            Livro::create($request->all());
-            return redirect()->route('livros.index');
+    public function store(StoreUpateLivros $request)
+    {
+        Livro::create($request->all());
+        return redirect()->route('livros.index');
+    }
+
+    public function show($id)
+    {
+        $livro = Livro::find($id);
+        if (!$livro) {
+            return redirect()
+                ->route('livros.index')
+                ->with('message', 'Livro não foi encontrado');
+        }
+        return view('livros.show', compact('livro'));
+    }
+
+    public function destroy($id)
+    {
+        $livro = Livro::find($id);
+        if (!$livro) {
+            return redirect()
+                ->route('livros.index')
+                ->with('message', 'Livro não foi encontrado');
+        }
+        $livro->delete();
+        return redirect()
+            ->route('livros.index')
+            ->with('message', 'Livro Deletado');
     }
 }
