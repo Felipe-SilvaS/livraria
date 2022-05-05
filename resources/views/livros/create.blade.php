@@ -2,15 +2,6 @@
 
 @section('content')
     <h2> Cadastar Livro</h2>
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
     <form action="{{ route('livro.store') }}" method="POST">
         @csrf
         <div style="margin-top: 10px; margin-bottom:10px">

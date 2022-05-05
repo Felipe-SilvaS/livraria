@@ -7,9 +7,9 @@
      <li>Ano {{$livro->ano}}</li>
      <li>Idioma {{$livro->idioma}}</li>
 </ul>
-<form action="">
+<form action="{{route('livos.destroy', $livro->id)}}" method="POST">
     @csrf
-    <input type="hidden" name="_method" value="DELETE">
+    @method('DELETE')
     <button type="submit">Deletar o livro {{$livro->titulo}} </button>
 </form>
 

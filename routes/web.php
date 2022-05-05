@@ -28,6 +28,6 @@ Route::post('/livros', [ LivroController::class, 'store'])->name('livro.store');
 //
 Route::get('/livros/{id}',[ LivroController::class, 'show'])->name('livros.show');
 //
-Route::delete('/livros/{id}', [LivroController::class, 'delete'])->name('livos.destroy');
+Route::delete('/livros/{id}', [LivroController::class, 'destroy'])->name('livos.destroy');
 
 
