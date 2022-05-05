@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\LivroController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\AutorController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -33,5 +33,8 @@ Route::delete('/livros/{id}', [LivroController::class, 'destroy'])->name('livros
 Route::get('/livros/edit/{id}', [Livrocontroller::class, 'edit'])->name('livros.edit');
 //
 Route::put('/livros/{id}', [Livrocontroller::class, 'update'])->name('livros.update');
+
+//Rotas relacionadas ao AutorController
+Route::resource('autor', AutorController::class);
 
 
