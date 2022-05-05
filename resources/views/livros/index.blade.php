@@ -16,7 +16,8 @@
         @foreach ($livros as $livro)
         <p>
             {{$livro->titulo}}
-            <a href="{{route('livros.show', $livro->id)}}"> detalhes</a>
+            <a href="{{route('livros.show', $livro->id)}}">[detalhes]</a>
+            <a href="{{route('livros.edit', $livro->id)}}">[editar]</a>
             </p>
             <hr>
         @endforeach

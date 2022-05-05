@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreUpateLivros;
+use App\Http\Requests\StoreUpdateLivro;
 use App\Models\Livro;
 
 class LivroController extends Controller
@@ -19,7 +19,7 @@ class LivroController extends Controller
         return view('livros.create');
     }
 
-    public function store(StoreUpateLivros $request)
+    public function store(StoreUpdateLivro $request)
     {
         Livro::create($request->all());
         return redirect()->route('livros.index');
@@ -48,5 +48,32 @@ class LivroController extends Controller
         return redirect()
             ->route('livros.index')
             ->with('message', 'Livro Deletado');
+    }
+
+    public function edit($id)
+    {
+        $livro = Livro::find($id);
+        if (!$livro) {
+            return redirect()
+                ->route('livros.index')
+                ->with('message', 'Livro não encontrado');
+        }
+
+        return view('livros.edit', compact('livro'));
+    }
+
+    public function update(StoreUpdateLivro $request, $id)
+    {
+        $livro = Livro::find($id);
+        if (!$livro) {
+            return redirect()
+                ->route('livros.index')
+                ->with('message', 'Livro não encontrado');
+        }
+
+        $livro->update($request->all());
+        return redirect()
+            ->route('livros.index')
+            ->with('message', 'Livro editado!');
     }
 }

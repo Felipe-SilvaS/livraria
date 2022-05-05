@@ -24,10 +24,14 @@ Route::get('/livros', [LivroController::class, 'index'])->name('livros.index');
 //Routa para o formulario de cadastro de livro
 Route::get('/livros/create', [LivroController::class, 'create'])->name('livros.create');
 //Cadastro de Livro
-Route::post('/livros', [ LivroController::class, 'store'])->name('livro.store');
+Route::post('/livros', [ LivroController::class, 'store'])->name('livros.store');
 //
 Route::get('/livros/{id}',[ LivroController::class, 'show'])->name('livros.show');
 //
-Route::delete('/livros/{id}', [LivroController::class, 'destroy'])->name('livos.destroy');
+Route::delete('/livros/{id}', [LivroController::class, 'destroy'])->name('livros.destroy');
+//
+Route::get('/livros/edit/{id}', [Livrocontroller::class, 'edit'])->name('livros.edit');
+//
+Route::put('/livros/{id}', [Livrocontroller::class, 'update'])->name('livros.update');
 
 
