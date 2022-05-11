@@ -12,7 +12,6 @@
         </div>
         @endif
 
-        <p>Lista de Livros</p>
         @foreach ($livros as $livro)
         <p>
             {{$livro->titulo}}
