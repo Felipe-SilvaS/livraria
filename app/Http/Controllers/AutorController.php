@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreUpdateAutor;
 use Illuminate\Http\Request;
 use App\Models\Autor;
 
@@ -26,7 +27,7 @@ class AutorController extends Controller
 
     public function create()
     {
-        //
+        return view('autors.create');
     }
 
     /**
@@ -35,9 +36,10 @@ class AutorController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreUpdateAutor $request)
     {
-        //
+        Autor::create($request->all());
+        return redirect()->route('autors.index');
     }
 
     /**
