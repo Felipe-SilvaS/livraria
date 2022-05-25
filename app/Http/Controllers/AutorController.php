@@ -50,7 +50,14 @@ class AutorController extends Controller
      */
     public function show($id)
     {
-        //
+        $autor = Autor::find($id);
+        if (!$autor) {
+            return redirect()
+                ->route('autores.index')
+                ->with('message', 'Livro não foi encontrado');
+        }
+
+        return view('autores.edit', compact('autor'));
     }
 
     /**
@@ -61,7 +68,14 @@ class AutorController extends Controller
      */
     public function edit($id)
     {
-        //
+        $autor = Autor::find($id);
+        if (!$autor) {
+            return redirect()
+                ->route('autores.index')
+                ->with('message', 'Livro não foi encontrado');
+        }
+
+        return view('autores.edit', compact('autor'));
     }
 
     /**
@@ -71,9 +85,19 @@ class AutorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreUpdateAutor $request, $id)
     {
-        //
+        $autor = Autor::find($id);
+        if (!$autor) {
+            return redirect()
+                ->route('autores.index')
+                ->with('message', 'Autor não encontrado');
+        }
+
+        $autor->update($request->all());
+        return redirect()
+            ->route('autores.index')
+            ->with('message', 'Atualizado os dados do autor');
     }
 
     /**
