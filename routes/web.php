@@ -35,6 +35,6 @@ Route::get('/livros/edit/{id}', [Livrocontroller::class, 'edit'])->name('livros.
 Route::put('/livros/{id}', [Livrocontroller::class, 'update'])->name('livros.update');
 
 //Rotas relacionadas ao AutorController
-Route::resource('autors', AutorController::class);
+Route::resource('autores', AutorController::class);
 
 

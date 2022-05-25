@@ -26,7 +26,7 @@ class StoreUpdateAutor extends FormRequest
         return [
             'nome' => 'required | max:50 | min: 3',
             'pais' => 'required | max:30 | min: 4',
-            'ano_nasc' => 'required | integer | size:4',
+            'ano_nasc' => 'required | integer | digits_between:4,4',
             'area' => 'required | max:50'
         ];
     }

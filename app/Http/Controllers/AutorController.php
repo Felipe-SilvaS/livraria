@@ -15,8 +15,8 @@ class AutorController extends Controller
      */
     public function index()
     {
-        $autors = Autor::all();
-        return view('autors.index', compact('autors'));
+        $autores = Autor::all();
+        return view('autores.index', compact('autores'));
     }
 
     /**
@@ -27,7 +27,7 @@ class AutorController extends Controller
 
     public function create()
     {
-        return view('autors.create');
+        return view('autores.create');
     }
 
     /**
@@ -39,7 +39,7 @@ class AutorController extends Controller
     public function store(StoreUpdateAutor $request)
     {
         Autor::create($request->all());
-        return redirect()->route('autors.index');
+        return redirect()->route('autores.index');
     }
 
     /**
