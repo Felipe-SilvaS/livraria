@@ -57,7 +57,7 @@ class AutorController extends Controller
                 ->with('message', 'Livro não foi encontrado');
         }
 
-        return view('autores.edit', compact('autor'));
+        return view('autores.show', compact('autor'));
     }
 
     /**
@@ -108,6 +108,16 @@ class AutorController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $autor = Autor::find($id);
+        if (!$autor) {
+            return redirect()
+                ->route('autores.index')
+                ->with('message', 'Autor não encontrado');
+        }
+
+        $autor->delete();
+        return redirect()
+            ->route('autores.index');
+        with('message', 'Autor Deletado');
     }
 }

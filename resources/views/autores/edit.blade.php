@@ -14,7 +14,7 @@
         </div>
 
         <div style="margin-top: 10px; margin-bottom:10px">
-            <label for="pais"> Nascionalidade: </label>
+            <label for="pais"> Nacionalidade: </label>
             <input type="text" id="pais" name="pais" value="{{ $autor->pais}}">
             <br>
         </div>
