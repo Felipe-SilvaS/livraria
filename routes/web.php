@@ -2,7 +2,8 @@
 
 use App\Http\Controllers\LivroController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AutorController;
+use App\Http\Controllers\{AutorController, EditoraController};
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -37,4 +38,6 @@ Route::put('/livros/{id}', [Livrocontroller::class, 'update'])->name('livros.upd
 //Rotas relacionadas ao AutorController
 Route::resource('autores', AutorController::class);
 
+//rotas relacionadas ao EditoraContorroler
+Route::resource('editoras', EditoraController::class);
 
