@@ -1,11 +1,11 @@
 @extends('layouts.base')
 
 @section('content')
-<h1>Dados do autor {{$editora->nome}}</h1>
+<h1>Dados da editora {{$editora->nome}}</h1>
  <ul>
-     <li>Nacionalidade {{$editora->local}}</li>
-     <li>Ano de Nascimento {{$editora->site}}</li>
-     <li>Área {{$editora->email}}</li>
+     <li>Local:  {{$editora->local}}</li>
+     <li>Site: {{$editora->site}}</li>
+     <li>Email: {{$editora->email}}</li>
 </ul>
 <form action="{{route('editoras.destroy', $editora->id)}}" method="POST">
     @csrf

@@ -46,13 +46,14 @@ class EditoraController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function show($id)
     {
         $editora = Editora::find($id);
-        if(!$editora){
+        if (!$editora) {
             return redirect()
-            ->route('editora.index')
-            ->with('message', 'Editora não entrontrada'); 
+                ->route('editora.index')
+                ->with('message', 'Editora não entrontrada');
         }
         return view('editoras.show', compact('editora'));
     }
@@ -65,7 +66,15 @@ class EditoraController extends Controller
      */
     public function edit($id)
     {
-        //
+        $editora = Editora::find($id);
+
+        if (!$editora) {
+            return redirect()
+                ->route('editora.index')
+                ->with('message', 'Editora não encontrada');
+        }
+
+        return view('editoras.edit', compact('editora'));
     }
 
     /**
@@ -75,9 +84,19 @@ class EditoraController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreUpdateEditora $request, $id)
     {
-        //
+        $editora = Editora::find($id);
+        if (!$editora) {
+            return redirect()
+                ->route('editoras.index')
+                ->with('message', 'Editora não encontrada');
+        }
+
+        $editora->update($request->all());
+        return redirect()
+            ->route('editoras.index')
+            ->with('message', 'Dados atualizados com sucesso');
     }
 
     /**
@@ -88,6 +107,16 @@ class EditoraController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $editora = Editora::find($id);
+        if (!$editora) {
+            return redirect()
+                ->route('editoras.index')
+                ->with('message', 'Editora não encontrada');
+        }
+
+        $editora->delete();
+        return redirect()
+            ->route('editoras.index')
+            ->with('message', 'Editora deletada');
     }
 }
