@@ -6,19 +6,35 @@
         <a href="{{ route('autores.create') }}">Cadastrar autor</a>
         <hr>
 
+        <div>
+            <form action="{{ route('autores.search') }}" method="POST">
+                @csrf
+                <p>Buscar</p>
+                <input type="text" name="search" id="search" placeholder="Digite a busca">
+                <button type="submit">Buscar</button>
+            </form>
+        </div>
+
+        <hr>
         @if (session('message'))
             <div>
                 {{ session('message') }}
             </div>
         @endif
 
-        @foreach ($autores as $autores)
+        @foreach ($autores as $autor)
             <section>
-                {{ $autores->nome }}
-                <a href="{{ route('autores.show', $autores->id) }}">[detalhes]</a>
-                <a href="{{ route('autores.edit', $autores->id) }}">[editar]</a>
+                {{ $autor->nome }}
+                <a href="{{ route('autores.show', $autor->id) }}">[detalhes]</a>
+                <a href="{{ route('autores.edit', $autor->id) }}">[editar]</a>
             </section>
             <hr>
         @endforeach
+
+        @if (isset($filters))
+            {{ $autores->appends($filters)->links() }}
+        @else
+            {{ $autores->links() }}
+        @endif
     </section>
 @endsection

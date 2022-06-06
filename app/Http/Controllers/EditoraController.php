@@ -119,4 +119,16 @@ class EditoraController extends Controller
             ->route('editoras.index')
             ->with('message', 'Editora deletada');
     }
+
+    public function search(Request $request){
+        $filters = $request->except('_token');
+        $editoras = Editora::where('nome', 'LIKE', "%$request->search%")
+            ->paginate(1);
+        if(!$editoras["data"]){
+            return redirect()
+            ->route('editoras.index')
+            ->with('message', 'Nenhum resultado para a pesquisa');
+        }
+        return view('editoras.index', compact('editoras', 'filters'));
+    }
 }

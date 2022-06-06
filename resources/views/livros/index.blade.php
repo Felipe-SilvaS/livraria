@@ -12,13 +12,26 @@
             </div>
         @endif
 
-        @foreach ($livros as $livro)
-            <p>
-                {{ $livro->titulo }}
-                <a href="{{ route('livros.show', $livro->id) }}">[detalhes]</a>
-                <a href="{{ route('livros.edit', $livro->id) }}">[editar]</a>
-            </p>
-            <hr>
-        @endforeach
+        @include('layouts.buscas.search')
+
+
+        <div class="mt-3">
+            @foreach ($livros as $livro)
+                <p>
+                    {{ $livro->titulo }}
+                    <a href="{{ route('livros.show', $livro->id) }}">[detalhes]</a>
+                    <a href="{{ route('livros.edit', $livro->id) }}">[editar]</a>
+                </p>
+                <hr>
+            @endforeach
+        </div>
+
+        <!-- Paginação -->
+        @if (isset($filters))
+            {{ $livros->appends($filters)->links() }}
+        @else
+            {{ $livros->links() }}
+        @endif
+
     </div>
 @endsection

@@ -15,7 +15,7 @@ class AutorController extends Controller
      */
     public function index()
     {
-        $autores = Autor::all();
+        $autores = Autor::orderby('nome')->paginate(1);
         return view('autores.index', compact('autores'));
     }
 
@@ -119,5 +119,12 @@ class AutorController extends Controller
         return redirect()
             ->route('autores.index');
         with('message', 'Autor Deletado');
+    }
+
+    public function search(Request $request){
+        $filters = $request->except('_token');
+        $autores = Autor::where('nome', 'LIKE', "%$request->search%")
+            ->paginate(1);
+        return view('autores.index', compact('autores', 'filters'));
     }
 }

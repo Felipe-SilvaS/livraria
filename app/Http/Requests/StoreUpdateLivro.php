@@ -26,7 +26,7 @@ class StoreUpdateLivro extends FormRequest
         return [
             'titulo' => 'required | max:100 | min:3',
             'isbn' => 'required | numeric | digits_between:10,13',
-            'ano' => 'required | integer | size:4',
+            'ano' => 'required | integer | digits_between:4,4',
             'idioma' => 'required | min:5'
         ];
     }

@@ -4,13 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreUpdateLivro;
 use App\Models\Livro;
+use Illuminate\Http\Request;
 
 class LivroController extends Controller
 {
     public function index()
     {
         // retorna todos os livros ordenando ordenando pelo id em decrescente
-        $livros = Livro::orderBy('id', 'desc')->get();
+        $livros = Livro::orderBy('id', 'desc')->paginate(2);
         return view('livros.index', compact('livros'));
     }
 
@@ -31,7 +32,7 @@ class LivroController extends Controller
         if (!$livro) {
             return redirect()
                 ->route('livros.index')
-                ->with('message', 'Livro não foi encontrado');
+                ->with('message', 'Livro não encontrado');
         }
         return view('livros.show', compact('livro'));
     }
@@ -75,5 +76,15 @@ class LivroController extends Controller
         return redirect()
             ->route('livros.index')
             ->with('message', 'Livro editado!');
+    }
+
+    public function search(Request $request)
+    {
+        $filters = $request->except('_token');
+        $livros = Livro::where('titulo', 'LIKE', "%$request->search%")
+            ->orwhere('idioma', 'LIKE', "%$request->search%")
+            ->paginate(1);
+
+        return view('livros.index', compact('livros', 'filters'));
     }
 }
