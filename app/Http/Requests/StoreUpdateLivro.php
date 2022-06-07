@@ -28,7 +28,8 @@ class StoreUpdateLivro extends FormRequest
             'isbn' => 'required | numeric | digits_between:10,13',
             'ano' => 'required | integer | digits_between:4,4',
             'idioma' => 'required | min:5',
-            'capa' => 'required | image'
+            'capa' => 'required | image',
+            'editora_id' => 'required'
         ];
     }
 }

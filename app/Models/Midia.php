@@ -9,10 +9,6 @@ class Midia extends Model
 {
     use HasFactory;
 
-    public function midia(){
-        return $this->hasOne(Mida::class);
-    }
-
     public function livro(){
         return $this->belongsTo(Livro::class);
     }

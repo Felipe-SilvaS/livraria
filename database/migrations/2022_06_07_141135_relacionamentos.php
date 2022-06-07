@@ -17,6 +17,10 @@ return new class extends Migration
         Schema::table('midias', function (Blueprint $table){
             $table->foreignId('livro_id')->constrained('livros');
         });
+
+        Schema::table('livros', function(Blueprint $table){
+            $table->foreignId('editora_id')->constrained('editoras');
+        });
     }
 
     /**
@@ -29,6 +33,10 @@ return new class extends Migration
         //
         Schema::table('midias', function (Blueprint $table){
             $table->dropForeign('livro_id');
+        });
+
+        Schema::table('livros', function (Blueprint $table){
+            $table->dropForeign('editora_id');
         });
     }
 };

@@ -10,4 +10,8 @@ class Editora extends Model
     use HasFactory;
 
     protected $fillable = ['nome', 'local', 'site', 'email'];
+
+    public function livro(){
+        return $this->hasMany(Livro::class);
+    }
 }

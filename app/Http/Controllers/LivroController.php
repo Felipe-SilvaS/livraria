@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreUpdateLivro;
-use App\Models\{Livro, Midia};
+use App\Models\{Editora, Livro, Midia};
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -30,15 +30,18 @@ class LivroController extends Controller
                 ->slug('-') . '.' . $request->capa->getClientOriginalExtension();
             $imagem = $request->capa->storeAs('livro', $nameFile);
             $data['capa'] = $imagem;
+            $tmp = Editora::where('nome', '=', $request->editora_id)->get();
+            if ($tmp != null) {
+                $editora = $tmp->first();
+                $data['editora_id'] = $editora->id;
+            }
             Livro::create($data);
-            return redirect()
-                ->route('livros.index');
+            return redirect()->route('livros.index');
         } else {
             return redirect()
                 ->route('livros.index')
-                ->with('message', 'Arquivo de imagem inválido!');
+                ->with('message', 'Imagem inválido!');
         }
-        // Livro::create($request->all());
         return redirect()->route('livros.index');
     }
 
@@ -52,14 +55,12 @@ class LivroController extends Controller
         }
 
         $midia = $livro->midia;
-        if($midia == null){
+        if ($midia == null) {
             $midia = new Midia;
             $midia->nome = '';
-            $midia->descricao= '';
+            $midia->descricao = '';
         }
         return view('livros.show', compact('livro', 'midia'));
-
-
     }
 
     public function destroy($id)
