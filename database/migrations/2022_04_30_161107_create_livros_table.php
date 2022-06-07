@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('isbn');
             $table->integer('ano');
             $table->string('idioma');
+            $table->string('capa', 256);
             $table->timestamps();
         });
     }

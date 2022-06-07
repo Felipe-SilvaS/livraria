@@ -27,7 +27,8 @@ class StoreUpdateLivro extends FormRequest
             'titulo' => 'required | max:100 | min:3',
             'isbn' => 'required | numeric | digits_between:10,13',
             'ano' => 'required | integer | digits_between:4,4',
-            'idioma' => 'required | min:5'
+            'idioma' => 'required | min:5',
+            'capa' => 'required | image'
         ];
     }
 }

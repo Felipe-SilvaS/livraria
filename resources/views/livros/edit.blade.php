@@ -40,6 +40,10 @@
                 <br>
             </div>
 
+            <div style="margin-top: 10px; margin-bottom:10px">
+                <img src="{{ url("storage/{$livro->capa}") }}" alt="{{ $livro->titulo }}" style="max-width:100px">
+            </div>
+
             <button type="submit">Enviar</button>
         </form>
     </div>

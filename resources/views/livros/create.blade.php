@@ -2,7 +2,19 @@
 
 @section('content')
     <h2> Cadastar Livro</h2>
-    <form action="{{ route('livros.store') }}" method="POST">
+
+    <!-- mostrar erros -->
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
+    <form action="{{ route('livros.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div style="margin-top: 10px; margin-bottom:10px">
             <label for="titulo"> Titulo: </label>
@@ -23,8 +35,14 @@
         </div>
 
         <div style="margin-top: 10px; margin-bottom:10px">
-            <label for=""> ISBN: </label>
+            <label for="isbn"> ISBN: </label>
             <input type="text" id="isbn" name="isbn" value="{{ old('isbn') }}">
+            <br>
+        </div>
+
+        <div style="margin-top: 10px; margin-bottom:10px">
+            <label for="capa"> Capa: </label>
+            <input type="file" id="capa" name="capa">
             <br>
         </div>
 

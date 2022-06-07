@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreUpdateLivro;
 use App\Models\Livro;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class LivroController extends Controller
 {
@@ -22,7 +24,21 @@ class LivroController extends Controller
 
     public function store(StoreUpdateLivro $request)
     {
-        Livro::create($request->all());
+        $data = $request->all();
+        if (isset($request->capa) && $request->capa->isValid()) {
+            $nameFile = Str::of($request->isbn)
+                ->slug('-') . '.' . $request->capa->getClientOriginalExtension();
+            $imagem = $request->capa->storeAs('livro', $nameFile);
+            $data['capa'] = $imagem;
+            Livro::create($data);
+            return redirect()
+                ->route('livros.index');
+        } else {
+            return redirect()
+                ->route('livros.index')
+                ->with('message', 'Arquivo de imagem inválido!');
+        }
+        // Livro::create($request->all());
         return redirect()->route('livros.index');
     }
 
@@ -70,6 +86,19 @@ class LivroController extends Controller
             return redirect()
                 ->route('livros.index')
                 ->with('message', 'Livro não encontrado');
+        }
+        if (isset($request->capa) and  $request->capa->isValid()) {
+            if (Storage::exists($livro->capa)) {
+                Storage::delete($livro->capa);
+            }
+            $nameFile = Str::of($request->isbn)->slug('-')
+                . '.' . $request->capa->getClientOrinalExtension();
+            $imagem = $request->capa->storeAs('livro', $nameFile);
+            $data['capa'] = $imagem;
+            $livro->update($data);
+            return redirect()->route('livros.index')->with('message', 'Livro Editado');
+        } else {
+            return redirect()->route('livros.index')->with('message', 'Imagem inválida');
         }
 
         $livro->update($request->all());
