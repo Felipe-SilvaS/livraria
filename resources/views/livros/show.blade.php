@@ -6,6 +6,9 @@
      <li>ISBN {{$livro->isbn}}</li>
      <li>Ano {{$livro->ano}}</li>
      <li>Idioma {{$livro->idioma}}</li>
+     <li>Midia</li>
+     <li>Nome da mídia: {{$midia->nome}}</li>
+     <li>Descrição da mídia: {{$midia->descricao}}</li>
 </ul>
 <form action="{{route('livros.destroy', $livro->id)}}" method="POST">
     @csrf

@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\LivroController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\{AutorController, EditoraController};
+use App\Http\Controllers\{AutorController, EditoraController, MidaController};
 
 /*
 |--------------------------------------------------------------------------
@@ -44,4 +44,7 @@ Route::resource('autores', AutorController::class);
 //rotas relacionadas ao EditoraContorroler
 Route::any('editoras/search', [EditoraController::class, 'search'])->name('editoras.search');
 Route::resource('editoras', EditoraController::class);
+
+// midia
+Route::resource('midias', MidaController::class);
 

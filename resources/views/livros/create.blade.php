@@ -46,6 +46,12 @@
             <br>
         </div>
 
+        <div style="margin-top: 10px; margin-bottom:10px">
+            <label for="idioma"> Idioma: </label>
+            <input type="text" id="idioma" name="idioma" value="{{ old('idioma') }}">
+            <br>
+        </div>
+
         <button type="submit">Enviar</button>
     </form>
 @endsection
