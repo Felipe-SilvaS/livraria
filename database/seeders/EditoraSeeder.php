@@ -22,7 +22,6 @@ class EditoraSeeder extends Seeder
             'local' => Str::random(10).' - SP',
             'site' => Str::random(10).' .com.br',
             'email' => Str::random(10).' @teste.com',
-
         ]);
     }
 }
