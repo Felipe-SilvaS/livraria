@@ -13,13 +13,28 @@ return new class extends Migration
      */
     public function up()
     {
-        //
-        Schema::table('midias', function (Blueprint $table){
-            $table->foreignId('livro_id')->constrained('livros');
+        Schema::table('midias', function (Blueprint $table) {
+            $table->foreignId('livro_id')
+                ->constrained('livros')
+                ->onDelete('cascade');
         });
 
-        Schema::table('livros', function(Blueprint $table){
-            $table->foreignId('editora_id')->constrained('editoras');
+        Schema::table('livros', function (Blueprint $table) {
+            $table->foreignId('editora_id')
+                ->constrained('editoras')
+                ->onDelete('cascade');
+        });
+
+        Schema::table('comentarios', function (Blueprint $table) {
+            $table->foreignId('livro_id')
+                ->constrained('livros')
+                ->onDelete('cascade');
+        });
+
+        Schema::create('livros_autores', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('livros_id')->constrained('livros');
+            $table->foreignId('autores_id')->constrained('autores');
         });
     }
 
@@ -30,13 +45,18 @@ return new class extends Migration
      */
     public function down()
     {
-        //
-        Schema::table('midias', function (Blueprint $table){
-            $table->dropForeign('livro_id');
+        Schema::table('midias', function (Blueprint $table) {
+            $table->dropForeign(['livro_id']);
         });
 
-        Schema::table('livros', function (Blueprint $table){
-            $table->dropForeign('editora_id');
+        Schema::table('livros', function (Blueprint $table) {
+            $table->dropForeign(['editora_id']);
         });
+
+        Schema::table('comentarios', function (Blueprint $table) {
+            $table->dropForeign(['livro_id']);
+        });
+
+        Schema::dropIfExists('livros_autores');
     }
 };
