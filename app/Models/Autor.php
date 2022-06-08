@@ -10,4 +10,8 @@ class Autor extends Model
     use HasFactory;
 
     protected $fillable = ['nome', 'pais', 'ano_nasc', 'area'];
+
+    public function livros(){
+        return $this->belongsToMany(Livro::class);
+    }
 }
