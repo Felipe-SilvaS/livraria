@@ -16,9 +16,7 @@
     <form action="{{ route('autores.destroy', $autor->id) }}" method="POST">
         @csrf
         @method('DELETE')
-        <button type="submit" class="btn btn-danger fs-1" >
-            <strong>Deletar dados</strong>
-        </button>
+        <button type="submit" class="btn btn-danger fs-1"> Deletar </button>
     </form>
 
 @endsection

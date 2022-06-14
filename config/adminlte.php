@@ -235,19 +235,50 @@ return [
         [
             'text' => 'Livros',
             'icon' => 'fas fa-fw fa-book',
-            'route' => 'livros.index',
-            'active' => ['livros/*']
+            'submenu' => [
+                [
+                    'text' => 'Listar',
+                    'route'  => 'livros.index',
+                    'icon' => 'far fa-dot-circle fa-xs ml-2'
+                ],
+                [
+                    'text' => 'Criar',
+                    'route'  => 'livros.create',
+                    'icon' => 'far fa-dot-circle fa-xs ml-2'
+                ],
+            ],
         ],
         [
             'text' => 'Autores',
             'icon' => 'fas fa-fw fa-feather-alt',
-            'route' => 'autores.index',
-            'active' => ['autores/*']
+            'submenu' => [
+                [
+                    'text' => 'Listar',
+                    'route'  => 'autores.index',
+                    'icon' => 'far fa-dot-circle fa-xs ml-2'
+                ],
+                [
+                    'text' => 'Criar',
+                    'route'  => 'autores.create',
+                    'icon' => 'far fa-dot-circle fa-xs ml-2'
+                ],
+            ],
         ],
         [
             'text'    => 'Editoras',
             'icon'    => 'fas fa-fw fa-book-reader',
-            'route' => 'editoras.index'
+            'submenu' => [
+                [
+                    'text' => 'Listar',
+                    'route'  => 'editoras.index',
+                    'icon' => 'far fa-dot-circle fa-xs ml-2'
+                ],
+                [
+                    'text' => 'Criar',
+                    'route'  => 'editoras.create',
+                    'icon' => 'far fa-dot-circle fa-xs ml-2'
+                ],
+            ],
         ],
 
     ],

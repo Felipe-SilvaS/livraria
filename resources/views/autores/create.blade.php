@@ -44,6 +44,6 @@
 
             </div>
         </div>
-        <button type="submit" class="btn btn-primary">Enviar <i class="fas fa-arrow-circle-right ml-1"></i></button>
+        <button type="submit" class="btn btn-primary">Enviar</button>
     </form>
 @endsection
