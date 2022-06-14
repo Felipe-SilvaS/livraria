@@ -15,7 +15,7 @@
                 <form action="{{ route('autores.search') }}" method="POST">
                     @csrf
                     <div class="input-group">
-                        <input type="text" id="search" class="form-control" name="search" placeholder="Digite a busca">
+                        <input type="text" id="search" class="form-control" name="search" placeholder="Buscar autor">
                         <div class="input-group-append">
                             <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i></button>
                         </div>
@@ -42,7 +42,7 @@
         <ul class="list-group mb-3">
             @foreach ($autores as $autor)
                 <li class="list-group-item d-flex justify-content-between">
-                    <div> {{ $autor->nome }}</div>
+                    <div><span class="align-middle">{{ $autor->nome }}</span></div>
                     <div>
                         <a href="{{ route('autores.show', $autor->id) }}"
                             class="btn btn-outline-info btn-sm ml-2">detalhes</a>

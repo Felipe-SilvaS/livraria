@@ -12,7 +12,7 @@
             <form action="{{ route('autores.store') }}" method="POST">
                 @csrf
                 <div class="form-group col-md-8 px-0">
-                    <label for="nome" class="font-weight-normal"> Nome: </label>
+                    <label for="nome" class="font-weight-normal">Nome: </label>
                     <input type="text" id="nome" class="form-control {{ $errors->has('nome') ? 'is-invalid' : '' }}"
                         name="nome" value="{{ old('nome') }}" aria-describedby="nomeInvalidFeedback">
                     <div id="nomeInvalidFeedback" class="invalid-feedback">
