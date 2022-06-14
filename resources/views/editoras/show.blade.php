@@ -1,4 +1,4 @@
-@extends('layouts.base')
+@extends('adminlte::page')
 
 @section('content')
 <h1>Dados da editora {{$editora->nome}}</h1>

@@ -227,48 +227,29 @@ return [
     'menu' => [
         // Navbar items:
         [
-            'type'         => 'navbar-search',
-            'text'         => 'search',
-            'topnav_right' => true,
+            'type'         => 'darkmode-widget',
+            'topnav_right' => true, // Or "topnav => true" to place on the left.
         ],
 
         // Sidebar items:
         [
-            'text' => 'blog',
-            'url'  => 'admin/blog',
-            'can'  => 'manage-blog',
-        ],
-        [
             'text' => 'Livros',
             'icon' => 'fas fa-fw fa-book',
-            'route' => 'livros.index'
+            'route' => 'livros.index',
+            'active' => ['livros/*']
         ],
         [
             'text' => 'Autores',
             'icon' => 'fas fa-fw fa-feather-alt',
-            'route' => 'autores.index'
+            'route' => 'autores.index',
+            'active' => ['autores/*']
         ],
         [
             'text'    => 'Editoras',
-            'icon'    => 'fas fa-fw fa-newspaper',
+            'icon'    => 'fas fa-fw fa-book-reader',
             'route' => 'editoras.index'
         ],
-        ['header' => 'labels'],
-        [
-            'text'       => 'important',
-            'icon_color' => 'red',
-            'url'        => '#',
-        ],
-        [
-            'text'       => 'warning',
-            'icon_color' => 'yellow',
-            'url'        => '#',
-        ],
-        [
-            'text'       => 'information',
-            'icon_color' => 'cyan',
-            'url'        => '#',
-        ],
+
     ],
 
     /*

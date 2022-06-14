@@ -1,8 +1,12 @@
-@extends('layouts.base')
+@extends('adminlte::page')
+
+@section('title', 'Livraria | Cadastro de Livro')
+
+@section('content_header')
+    <h1>Cadastrar Livro</h1>
+@stop
 
 @section('content')
-    <h2> Cadastar Livro</h2>
-
     <!-- mostrar erros -->
     @if ($errors->any())
         <div class="alert alert-danger">

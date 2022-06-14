@@ -1,16 +1,24 @@
-@extends('layouts.base')
+@extends('adminlte::page')
+
+@section('title', 'Livraria | Detalhes do Autor')
+
+@section('content_header')
+    <h1>Dados de {{ $autor->nome }}</h1>
+@stop
 
 @section('content')
-<h1>Dados do autor {{$autor->nome}}</h1>
- <ul>
-     <li>Nacionalidade: {{$autor->pais}}</li>
-     <li>Ano de Nascimento: {{$autor->ano_nasc}}</li>
-     <li>Área: {{$autor->area}}</li>
-</ul>
-<form action="{{route('autores.destroy', $autor->id)}}" method="POST">
-    @csrf
-    @method('DELETE')
-    <button type="submit">Deletar dados de {{$autor->nome}} </button>
-</form>
+    <ul class="list group p-0">
+        <li class="list-group-item"> Nome: {{ $autor->nome }}</li>
+        <li class="list-group-item">Nacionalidade: {{ $autor->pais }}</li>
+        <li class="list-group-item">Ano de Nascimento: {{ $autor->ano_nasc }}</li>
+        <li class="list-group-item">Área: {{ $autor->area }}</li>
+    </ul>
+    <form action="{{ route('autores.destroy', $autor->id) }}" method="POST">
+        @csrf
+        @method('DELETE')
+        <button type="submit" class="btn btn-danger fs-1" >
+            <strong>Deletar dados</strong>
+        </button>
+    </form>
 
 @endsection

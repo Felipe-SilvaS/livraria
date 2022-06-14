@@ -40,15 +40,15 @@ return new class extends Migration
     public function down()
     {
         Schema::table('midias', function (Blueprint $table) {
-            $table->dropForeign(['livro_id']);
+            $table->dropForeign('livro_id');
         });
 
         Schema::table('livros', function (Blueprint $table) {
-            $table->dropForeign(['editora_id']);
+            $table->dropForeign('editora_id');
         });
 
         Schema::table('comentarios', function (Blueprint $table) {
-            $table->dropForeign(['livro_id']);
+            $table->dropForeign('livro_id');
         });
     }
 };

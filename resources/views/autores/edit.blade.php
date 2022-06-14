@@ -1,7 +1,12 @@
-@extends('layouts.base')
+@extends('adminlte::page')
+
+@section('title', 'Livraria | Atualizar dados de Autor')
+
+@section('content_header')
+    <h1>Atualizar dados de {{$autor->nome}}</h1>
+@stop
 
 @section('content')
-    <h2> Editar dados do {{ $autor->nome }}</h2>
     <form action="{{ route('autores.update', $autor->id) }}" method="POST">
         @method('PUT')
         @csrf

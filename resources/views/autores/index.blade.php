@@ -1,24 +1,44 @@
-@extends('layouts.base')
+@extends('adminlte::page')
+
+@section('title', 'Livraria | Autores')
+
+@section('content_header')
+    <h1>Autores Cadastrados</h1>
+@stop
+
 @section('content')
-    <section>
-        <h1>Lista de Autores</h1>
+    <div>
 
-        <a href="{{ route('autores.create') }}">Cadastrar autor</a>
-        <hr>
-
-        <div>
-            <form action="{{ route('autores.search') }}" method="POST">
-                @csrf
-                <p>Buscar</p>
-                <input type="text" name="search" id="search" placeholder="Digite a busca">
-                <button type="submit">Buscar</button>
-            </form>
+        <!-- search -->
+        <div class="row justify-content-between">
+            <div class="col-md-6">
+                <form action="{{ route('autores.search') }}" method="POST">
+                    @csrf
+                    <div class="input-group">
+                        <input type="text" id="search" class="form-control" name="search" placeholder="Digite a busca">
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!--  -->
+            <div class="col-md-6 d-flex justify-content-end">
+                <a href="{{ route('autores.create') }}" class="btn btn-primary">Cadastrar autor</a>
+            </div>
         </div>
 
         <hr>
         @if (session('message'))
-            <div>
-                {{ session('message') }}
+            <div class="alert alert-info alert-dismissible fade show" role="alert">
+
+                <div>
+                    {{ session('message') }}
+                </div>
+
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
         @endif
 
@@ -36,5 +56,5 @@
         @else
             {{ $autores->links() }}
         @endif
-    </section>
+    </div>
 @endsection

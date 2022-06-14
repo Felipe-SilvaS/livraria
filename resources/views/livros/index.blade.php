@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Dashboard')
+@section('title', 'Livraria | Livros')
 
 @section('content_header')
     <h1>Lista de Livros</h1>
@@ -46,7 +46,5 @@
 @stop
 
 @section('js')
-    <script>
-        console.log('Hi!');
-    </script>
+    <script></script>
 @stop

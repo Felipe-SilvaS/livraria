@@ -1,4 +1,11 @@
-@extends('layouts.base')
+@extends('adminlte::page')
+
+@section('title', 'Livraria | Editação de Livro')
+
+@section('content_header')
+    <h1>Atualizar Dados</h1>
+@stop
+
 @section('content')
     <h1>Editar o livro {{ $livro->titulo }}</h1>
 

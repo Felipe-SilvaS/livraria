@@ -1,4 +1,4 @@
-@extends('layouts.base')
+@extends('adminlte::page')
 
 @section('content')
     <h2> Cadastrar Editora</h2>

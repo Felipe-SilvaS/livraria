@@ -39,7 +39,8 @@ class AutorController extends Controller
     public function store(StoreUpdateAutor $request)
     {
         Autor::create($request->all());
-        return redirect()->route('autores.index');
+        return redirect()->route('autores.index')
+        ->with('message', 'Autor cadastro com sucesso');
     }
 
     /**
