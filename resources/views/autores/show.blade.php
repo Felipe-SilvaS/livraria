@@ -8,7 +8,7 @@
 
 @section('content')
     <ul class="list group p-0">
-        <li class="list-group-item"> Nome: {{ $autor->nome }}</li>
+        <li class="list-group-item">Nome: {{ $autor->nome }}</li>
         <li class="list-group-item">Nacionalidade: {{ $autor->pais }}</li>
         <li class="list-group-item">Ano de Nascimento: {{ $autor->ano_nasc }}</li>
         <li class="list-group-item">Área: {{ $autor->area }}</li>
@@ -16,7 +16,7 @@
     <form action="{{ route('autores.destroy', $autor->id) }}" method="POST">
         @csrf
         @method('DELETE')
-        <button type="submit" class="btn btn-danger fs-1"> Deletar </button>
+        <button type="submit" class="btn btn-primary fs-1"> Deletar </button>
     </form>
 
 @endsection
