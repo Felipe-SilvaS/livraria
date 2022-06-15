@@ -8,10 +8,8 @@
 
 @section('content')
     <div>
-
         <!-- search -->
-        <div class="row justify-content-between">
-            <div class="col-md-6">
+            <div class="col-md-6 px-0">
                 <form action="{{ route('autores.search') }}" method="POST">
                     @csrf
                     <div class="input-group">
@@ -23,16 +21,14 @@
                 </form>
             </div>
             <!--  -->
-        </div>
 
         <hr>
+
         @if (session('message'))
             <div class="alert alert-info alert-dismissible fade show" role="alert">
-
                 <div>
                     {{ session('message') }}
                 </div>
-
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>

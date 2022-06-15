@@ -3,7 +3,7 @@
 @section('title', 'Livraria | Detalhes do Autor')
 
 @section('content_header')
-    <h1>Dados de {{ $autor->nome }}</h1>
+    <h1>Dados do {{ $autor->nome }}</h1>
 @stop
 
 @section('content')
@@ -13,10 +13,11 @@
         <li class="list-group-item">Ano de Nascimento: {{ $autor->ano_nasc }}</li>
         <li class="list-group-item">Área: {{ $autor->area }}</li>
     </ul>
+
     <form action="{{ route('autores.destroy', $autor->id) }}" method="POST">
         @csrf
         @method('DELETE')
-        <button type="submit" class="btn btn-primary fs-1"> Deletar </button>
+        <button type="submit" class="btn btn-primary"> Deletar </button>
     </form>
 
 @endsection

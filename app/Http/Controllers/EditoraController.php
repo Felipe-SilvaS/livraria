@@ -15,7 +15,7 @@ class EditoraController extends Controller
      */
     public function index()
     {
-        $editoras = Editora::orderBy('id', 'desc')->get();
+        $editoras = Editora::select('id', 'nome')->orderBy('id', 'desc')->paginate(15);
         return view('editoras.index', compact('editoras'));
     }
 
@@ -38,7 +38,8 @@ class EditoraController extends Controller
     public function store(StoreUpdateEditora $request)
     {
         Editora::create($request->all());
-        return redirect()->route('editoras.index');
+        return redirect()->route('editoras.index')
+        ->with('message', 'Editora cadastra com sucesso');
     }
     /**
      * Display the specified resource.
@@ -122,13 +123,9 @@ class EditoraController extends Controller
 
     public function search(Request $request){
         $filters = $request->except('_token');
-        $editoras = Editora::where('nome', 'LIKE', "%$request->search%")
-            ->paginate(1);
-        if(!$editoras["data"]){
-            return redirect()
-            ->route('editoras.index')
-            ->with('message', 'Nenhum resultado para a pesquisa');
-        }
+        $editoras = Editora::where('nome', 'LIKE', "%$request->search%")->paginate(15);
+
+
         return view('editoras.index', compact('editoras', 'filters'));
     }
 }

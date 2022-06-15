@@ -15,7 +15,7 @@ class AutorController extends Controller
      */
     public function index()
     {
-        $autores = Autor::orderby('nome')->paginate(3);
+        $autores = Autor::orderby('nome')->paginate(15);
         return view('autores.index', compact('autores'));
     }
 

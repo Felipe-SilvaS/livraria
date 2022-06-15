@@ -122,7 +122,7 @@ class LivroController extends Controller
         $filters = $request->except('_token');
         $livros = Livro::where('titulo', 'LIKE', "%$request->search%")
             ->orwhere('idioma', 'LIKE', "%$request->search%")
-            ->paginate(1);
+            ->paginate(15);
 
         return view('livros.index', compact('livros', 'filters'));
     }
