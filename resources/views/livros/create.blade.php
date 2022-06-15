@@ -50,12 +50,16 @@
             <br>
         </div>
 
-        <div style="margin-top: 10px; margin-bottom:10px">
-            <label for="idioma"> Idioma: </label>
-            <input type="text" id="idioma" name="idioma" value="{{ old('idioma') }}">
-            <br>
+        <div class="input-group col-md-3 px-0">
+            <div class="input-group-prepend">
+                <label for="idEditora" class="input-group-text font-weight-normal">Editoras</label>
+            </div>
+            <select name="" id="" class="form-control">
+                <option value=""></option>
+            </select>
         </div>
-
-        <button type="submit">Enviar</button>
+        <div>
+            <button type="submit">Enviar</button>
+        </div>
     </form>
 @endsection

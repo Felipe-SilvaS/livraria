@@ -19,7 +19,8 @@ class LivroController extends Controller
 
     public function create()
     {
-        return view('livros.create');
+        $editoras = Editora::select('id', 'nome')->get();
+            return view('livros.create', compact('editoras'));
     }
 
     public function store(StoreUpdateLivro $request)

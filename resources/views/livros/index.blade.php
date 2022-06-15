@@ -8,19 +8,25 @@
 
 @section('content')
     <div>
-        <p><a href="{{ route('livros.create') }}">Inserir novo Livro</a></p>
+        <div class="col-md-6 px-0">
+            <form action="{{ route('livros.search') }}" method="POST">
+                @csrf
+                <div class="input-group">
+                    <input type="text" id="search" class="form-control" name="search" placeholder="Buscar autor">
+                    <div class="input-group-append">
+                        <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i></button>
+                    </div>
+                </div>
+            </form>
+        </div>
         <hr>
-
         @if (session('message'))
             <div>
                 {{ session('message') }}
             </div>
         @endif
 
-        @include('layouts.buscas.search')
-
-
-        <div class="mt-3">
+        <div class="list-group mb-3">
             @foreach ($livros as $livro)
                 <p>
                     {{ $livro->titulo }}
